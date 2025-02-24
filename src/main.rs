@@ -24,10 +24,10 @@ fn simple_linear_regression (data: &Vec<(f64, f64)>, batch: &i32, epoch: &i32, r
     let mut weight = 0.0;
     let mut bias = 0.0;
     for _ in 0..*epoch {
-        let mut weight_change = 0.0;
-        let mut bias_change = 0.0;
         let partitions: Vec<(usize, usize)> = divide_partitions(data, batch);
         for (lower, upper) in partitions {
+            let mut weight_change = 0.0;
+            let mut bias_change = 0.0;
             let n: f64 = (upper-lower) as f64;
             for index in lower..upper{
                 let (x, y) = data[lower];
